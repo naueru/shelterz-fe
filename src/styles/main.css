@@ -1,0 +1,29 @@
+@import './colors.css';
+
+html,
+body,
+#app {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  height: 100vh;
+  margin: 0;
+  max-height: 100vh;
+  max-width: 100vw;
+  padding: 0;
+  width: 100vw;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+* {
+  background: none;
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  text-decoration: none;
+}
