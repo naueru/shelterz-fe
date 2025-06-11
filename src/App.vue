@@ -1,34 +1,13 @@
 <script setup lang="ts">
-import TheHeader from './components/layout/TheHeader/TheHeader.vue'
-import TheFooter from './components/layout/TheFooter/TheFooter.vue'
-import TheMenu from './components/layout/TheMenu/TheMenu.vue'
-import TheOutlet from './components/layout/TheOutlet/TheOutlet.vue'
+// Components
+import TheOutlet from '@/components/layout/TheOutlet/TheOutlet.vue'
 </script>
 
 <template>
-  <TheHeader msg="The post apocalyptic managment game" />
-  <div class="mainSectionWrapper">
-    <div class="mainSectionContainer">
-      <TheMenu />
-      <TheOutlet />
-    </div>
-  </div>
-  <TheFooter />
+  <TheOutlet />
 </template>
 
 <style scoped>
-.mainSectionWrapper {
-  background: pink;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-}
-.mainSectionContainer {
-  display: flex;
-  flex: 1;
-  max-width: 1500px;
-}
-
 @media (min-width: 1024px) {
 }
 </style>
