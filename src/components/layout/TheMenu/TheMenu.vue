@@ -1,5 +1,15 @@
 <script setup lang="ts">
-import MenuButton from '../../ui/MenuButton/MenuButton.vue'
+// Router
+import { useRouter } from 'vue-router'
+
+// Store
+import store from '@/store/store'
+
+// Components
+import MenuButton from '@/components/ui/MenuButton/MenuButton.vue'
+
+const router = useRouter()
+const logOut = store((state) => state.logOut)
 
 defineProps<{}>()
 </script>
@@ -16,6 +26,7 @@ defineProps<{}>()
       <MenuButton to="/military" label="Military" />
       <MenuButton to="/diplomacy" label="Diplomacy" />
       <MenuButton to="/about" label="About" />
+      <button @click="() => logOut(router)">Log Out</button>
     </nav>
   </aside>
 </template>
