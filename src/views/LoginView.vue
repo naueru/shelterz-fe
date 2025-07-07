@@ -7,6 +7,7 @@ import store from '@/store/store'
 
 // Component
 import LoginForm from '@/components/features/login/LoginForm.vue'
+import Card from '@/components/ui/card/Card.vue'
 
 const router = useRouter()
 
@@ -17,4 +18,20 @@ function handleSubmit(data: Record<string, string>) {
 }
 </script>
 
-<template><LoginForm :onSubmit="handleSubmit" /></template>
+<template>
+  <div class="loginContainer">
+    <Card>
+      <LoginForm :onSubmit="handleSubmit" />
+    </Card>
+  </div>
+</template>
+
+<style scoped>
+.loginContainer {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+</style>
