@@ -1,17 +1,22 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import TheOutlet from './TheOutlet.vue'
+import { RouterView } from 'vue-router'
 
 describe('TheOutlet', () => {
-  it('renders a main element with class "container" and contains RouterView', () => {
-    const wrapper = mount(TheOutlet)
+  it('renders a main element with class "outletContainer" and contains RouterView', () => {
+    const wrapper = mount(TheOutlet, {
+      global: {
+        stubs: {
+          RouterView: true,
+        },
+      },
+    })
 
-    // Check that main.container exists
-    const main = wrapper.find('main.container')
+    const main = wrapper.find('main.outletContainer')
     expect(main.exists()).toBe(true)
 
-    // Check that RouterView component is rendered inside
-    const routerView = wrapper.findComponent({ name: 'RouterView' })
+    const routerView = wrapper.findComponent(RouterView)
     expect(routerView.exists()).toBe(true)
   })
 })
