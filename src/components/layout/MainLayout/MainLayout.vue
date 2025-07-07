@@ -19,7 +19,6 @@ import TheOutlet from '@/components/layout/TheOutlet/TheOutlet.vue'
 
 <style scoped>
 .mainSectionWrapper {
-  background: pink;
   display: flex;
   flex: 1;
   justify-content: center;
