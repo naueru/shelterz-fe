@@ -18,7 +18,6 @@ defineProps<{}>()
 <style scoped>
 .container {
   align-items: center;
-  background: darkblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,7 +25,7 @@ defineProps<{}>()
 }
 
 .title {
-  border: 2px solid white;
+  border: 2px solid var(--color-header-border);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -37,7 +36,7 @@ defineProps<{}>()
 
 .wrapper {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: var(--color-black-overlay);
   display: flex;
   grid-column-end: 2;
   grid-column-start: 1;
