@@ -3,11 +3,14 @@ import { ref, watch } from 'vue'
 
 // Components
 import Field from '@/components/ui/field/Field.vue'
+import Headline from '@/components/ui/headline/Headline.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 interface FieldDefinition {
   label: string
   name: string
   type?: string
+  error?: string
 }
 
 const props = defineProps<{
@@ -48,8 +51,11 @@ function onSubmit(e: Event) {
 </script>
 
 <template>
-  <form @submit="onSubmit" class="container">
-    <h2 v-if="title">{{ title }}</h2>
+  <form @submit="onSubmit" class="formContainer">
+    <slot name="header" v-if="!!title">
+      <Headline v-if="title">{{ title }}</Headline>
+    </slot>
+
     <Field
       v-for="field in fields"
       :key="field.name"
@@ -57,20 +63,38 @@ function onSubmit(e: Event) {
       :name="field.name"
       :type="field.type"
       :modelValue="formData[field.name]"
+      :error="field.error"
       @update:modelValue="(value) => updateField(field.name, value)"
     />
-    <button type="submit">{{ submitLabel || 'Submit' }}</button>
-    <button v-if="!!cancelLabel && !!handleCancel" type="button" @click="handleCancel">
-      {{ cancelLabel || 'Cancel' }}
-    </button>
+    <slot name="footer">
+      <div class="formActions">
+        <Button type="submit">{{ submitLabel || 'Submit' }}</Button>
+        <Button
+          v-if="!!cancelLabel && !!handleCancel"
+          type="button"
+          @click="handleCancel"
+          secondary
+        >
+          {{ cancelLabel || 'Cancel' }}
+        </Button>
+      </div>
+    </slot>
   </form>
 </template>
 
 <style scoped>
-.container {
+.formContainer {
+  align-items: center;
+  background-color: inherit;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  justify-content: center;
   max-width: 400px;
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
 }
 </style>
