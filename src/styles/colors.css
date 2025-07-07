@@ -1,10 +1,23 @@
 :root {
-}
+  --color-background: #333333;
+  --color-footer-background: #ffd900;
+  --color-header-border: #ffd900;
+  --color-dialog-background: #eeeeee;
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #ef5350;
+  --color-alert: #ff9800;
+  --color-info: #03a9f4;
 
-:root {
+  --color-black-overlay: rgba(0, 0, 0, 0.15);
+
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --color-dialog-background: #505050;
+    --color-dialog-background: #eeeeee;
   }
 }
