@@ -1,11 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+// Router
+import { useRouter } from 'vue-router'
+
 // Components
 import Form from '@/components/ui/form/Form.vue'
 
 // Types
 import type { IObject } from '@/types/generics'
+
+const router = useRouter()
+
+const goToSignup = () => {
+  router.push({ name: 'signup' })
+}
 
 const props = defineProps<{
   onSubmit: (data: IObject) => void
@@ -21,7 +30,7 @@ const formData = ref({
   password: '',
 })
 
-function handleSubmit(data: Record<string, string>) {
+const handleSubmit = (data: IObject) => {
   props.onSubmit(data)
 }
 </script>
@@ -33,5 +42,7 @@ function handleSubmit(data: Record<string, string>) {
     title="Login"
     @submit="handleSubmit"
     submit-label="Login"
+    cancel-label="or Signup"
+    :handle-cancel="goToSignup"
   ></Form>
 </template>
