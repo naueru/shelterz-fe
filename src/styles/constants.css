@@ -1,0 +1,9 @@
+:root {
+  --shadow-small: 2px 2px 8px 0px #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-small: 2px 2px 8px 0px #000000;
+  }
+}
