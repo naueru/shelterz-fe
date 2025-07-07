@@ -16,7 +16,12 @@ export const checkTokenOnLoad = () => {
   const isTokenValid = now < (tokenExpiration || 0)
   if (!isTokenValid) {
     removeToken()
-    router.push({ name: 'login' })
+
+    if (window.location.pathname.split('/').pop() === 'signup') {
+      router.push({ name: 'signup' })
+    } else {
+      router.push({ name: 'login' })
+    }
   } else {
     if (token && tokenExpiration) {
       const diff = tokenExpiration.getTime() - now.getTime()
