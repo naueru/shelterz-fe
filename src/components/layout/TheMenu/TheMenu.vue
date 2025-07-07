@@ -15,7 +15,7 @@ defineProps<{}>()
 </script>
 
 <template>
-  <aside class="container">
+  <aside class="theMenuContainer">
     <nav class="menu">
       <MenuButton to="/" label="Dashboard" />
       <MenuButton to="/build" label="Build" />
@@ -32,11 +32,11 @@ defineProps<{}>()
 </template>
 
 <style scoped>
-.container {
-  background: cadetblue;
+.theMenuContainer {
   display: flex;
   padding: 2rem;
 }
+
 .menu {
   display: flex;
   flex-direction: column;
