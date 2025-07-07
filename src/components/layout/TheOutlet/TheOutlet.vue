@@ -5,14 +5,14 @@ defineProps<{}>()
 </script>
 
 <template>
-  <main class="container">
+  <main class="outletContainer">
     <RouterView />
   </main>
 </template>
 
 <style scoped>
-.container {
-  background: blueviolet;
+.outletContainer {
+  background-color: var(--color-background);
   display: flex;
   flex-direction: column;
   height: 100%;
