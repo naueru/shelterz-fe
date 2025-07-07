@@ -7,9 +7,12 @@ import { useRouter } from 'vue-router'
 // Components
 import Form from '@/components/ui/form/Form.vue'
 
+// Types
+import type { IObject } from '../../../types/generics'
+
 const router = useRouter()
 
-function goToLogin() {
+const goToLogin = () => {
   router.push({ name: 'login' })
 }
 
@@ -27,7 +30,7 @@ const formData = ref({
   confirmPassword: '',
 })
 
-function handleSubmit(data: Record<string, string>) {
+const handleSubmit = (data: IObject) => {
   console.log('Signup submitted:', data)
   // Add your signup logic here
 }
