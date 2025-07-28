@@ -42,9 +42,15 @@ export type IUserStore = {
    * @param {Router} router - Vue Router instance for navigation.
    */
   logOut: (router: Router) => void
+  signup: (userName: string, email: string, password: string, image: string, router: Router) => void
+  /**
+   * Create a new user and navigating to login page.
+   *
+   * @param {Router} router - Vue Router instance for navigation.
+   */
 }
 
-const { login: logUserIn } = axiosService()
+const { login: logUserIn, createUser } = axiosService()
 const createUserSlice: StateCreator<IUserStore> = (set, get) => {
   let logoutTimer: NodeJS.Timeout | null = null
 
@@ -89,6 +95,24 @@ const createUserSlice: StateCreator<IUserStore> = (set, get) => {
         tokenExpirationDate: null,
       })
       router.push({ name: 'login' })
+    },
+
+    signup: async (
+      userName: string,
+      email: string,
+      password: string,
+      image: string = 'none',
+      router: Router,
+    ) => {
+      createUser({ userName, email, password, image })
+        .then((res) => {
+          const token = res.data.user.token
+          if (token) {
+            get().setToken(token, HOUR_IN_MILLIES, router)
+            router.push({ name: 'dashboard' })
+          }
+        })
+        .catch((err) => console.log(err.response.data.message))
     },
   }
 }
