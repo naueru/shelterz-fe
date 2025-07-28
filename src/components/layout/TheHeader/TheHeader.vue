@@ -5,10 +5,10 @@ defineProps<{}>()
 </script>
 
 <template>
-  <header class="container">
-    <h1 class="title">
-      <div class="background"></div>
-      <div class="wrapper">
+  <header class="theHeaderContainer">
+    <h1 class="theHeaderTitle">
+      <div class="theHeaderBackground"></div>
+      <div class="theHeaderWrapper">
         <Logo :size-factor="0.4" />
       </div>
     </h1>
@@ -16,17 +16,16 @@ defineProps<{}>()
 </template>
 
 <style scoped>
-.container {
+.theHeaderContainer {
   align-items: center;
-  background: darkblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 2rem;
 }
 
-.title {
-  border: 2px solid white;
+.theHeaderTitle {
+  border: 2px solid var(--color-header-border);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -35,9 +34,9 @@ defineProps<{}>()
   width: 100%;
 }
 
-.wrapper {
+.theHeaderWrapper {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: var(--color-black-overlay);
   display: flex;
   grid-column-end: 2;
   grid-column-start: 1;
@@ -48,7 +47,7 @@ defineProps<{}>()
   position: relative;
 }
 
-.background {
+.theHeaderBackground {
   background-image: url('@/assets/banner.png');
   background-position: center;
   background-repeat: no-repeat;

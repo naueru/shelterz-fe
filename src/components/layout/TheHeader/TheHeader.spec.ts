@@ -8,15 +8,15 @@ describe('TheHeader', () => {
     const wrapper = mount(TheHeader)
 
     // Check header container exists
-    const header = wrapper.find('header.container')
+    const header = wrapper.find('header.theHeaderContainer')
     expect(header.exists()).toBe(true)
 
     // Check h1.title exists
-    const title = wrapper.find('h1.title')
+    const title = wrapper.find('h1.theHeaderTitle')
     expect(title.exists()).toBe(true)
 
     // Check that Logo component is rendered inside the wrapper div
-    const logoWrapper = wrapper.find('div.wrapper')
+    const logoWrapper = wrapper.find('div.theHeaderWrapper')
     expect(logoWrapper.exists()).toBe(true)
 
     const logo = wrapper.findComponent(Logo)

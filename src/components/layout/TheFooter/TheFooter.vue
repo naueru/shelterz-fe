@@ -13,7 +13,7 @@ defineProps<{}>()
 <style scoped>
 .container {
   align-items: center;
-  background: burlywood;
+  background-color: var(--color-footer-background);
   display: flex;
   justify-content: center;
 }

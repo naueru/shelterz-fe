@@ -6,8 +6,8 @@ describe('TheMenu', () => {
   it('renders the aside container and all MenuButton components', () => {
     const wrapper = mount(TheMenu)
 
-    // Check the aside container exists with class "container"
-    const aside = wrapper.find('aside.container')
+    // Check the aside container exists with class "theMenuContainer"
+    const aside = wrapper.find('aside.theMenuContainer')
     expect(aside.exists()).toBe(true)
 
     // Check the nav.menu exists inside the aside
