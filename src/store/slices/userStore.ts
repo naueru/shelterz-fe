@@ -66,9 +66,8 @@ const createUserSlice: StateCreator<IUserStore> = (set, get) => {
         tokenExpirationDate: new Date(new Date().getTime() + expiresInMillies).toISOString(),
       })
       if (logoutTimer) clearTimeout(logoutTimer)
-      console.log('setToken')
+
       logoutTimer = setTimeout(() => {
-        console.log('timer')
         get().logOut(router)
       }, expiresInMillies)
     },
@@ -88,7 +87,6 @@ const createUserSlice: StateCreator<IUserStore> = (set, get) => {
     },
 
     logOut: (router: Router) => {
-      console.log('logout')
       set({
         token: null,
         isLoggedIn: false,
