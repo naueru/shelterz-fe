@@ -2,19 +2,12 @@
 import { ref, watch } from 'vue'
 
 // Components
-import Field from '@/components/ui/field/Field.vue'
+import Field, { type FieldDefinition } from '@/components/ui/field/Field.vue'
 import Headline from '@/components/ui/headline/Headline.vue'
 import Button from '@/components/ui/button/Button.vue'
 
-interface FieldDefinition {
-  label: string
-  name: string
-  type?: string
-  error?: string
-}
-
 const props = defineProps<{
-  fields: FieldDefinition[]
+  fields: Omit<FieldDefinition, 'modelValue'>[]
   modelValue: Record<string, string>
   title?: string
   submitLabel?: string
@@ -64,6 +57,8 @@ function onSubmit(e: Event) {
       :type="field.type"
       :modelValue="formData[field.name]"
       :error="field.error"
+      :options="field.options"
+      :placeholder="field.placeholder"
       @update:modelValue="(value) => updateField(field.name, value)"
     />
     <slot name="footer">
