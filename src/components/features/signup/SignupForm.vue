@@ -16,8 +16,21 @@ const goToLogin = () => {
   router.push({ name: 'login' })
 }
 
+const props = defineProps<{
+  onSubmit: (data: IObject) => void
+}>()
+
 const signupFields = [
-  { label: 'Username', name: 'username' },
+  {
+    label: 'Image',
+    name: 'image',
+    type: 'imageSelect',
+    options: [
+      { label: 'The Sherif', value: 'sherif' },
+      { label: 'The Redneck', value: 'redneck' },
+    ],
+  },
+  { label: 'Username', name: 'userName' },
   { label: 'Email', name: 'email', type: 'email' },
   { label: 'Password', name: 'password', type: 'password' },
   { label: 'Confirm Password', name: 'confirmPassword', type: 'password' },
@@ -28,11 +41,11 @@ const formData = ref({
   email: '',
   password: '',
   confirmPassword: '',
+  image: 'redneck',
 })
 
 const handleSubmit = (data: IObject) => {
-  console.log('Signup submitted:', data)
-  // Add your signup logic here
+  props.onSubmit(data)
 }
 </script>
 
