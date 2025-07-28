@@ -1,11 +1,17 @@
 <script setup lang="ts">
-defineProps<{
+import type { ISelectOption } from '../../../types/generics'
+
+export interface FieldDefinition {
   label: string
   name: string
   modelValue: string
-  type?: HTMLInputElement['type']
+  type?: HTMLInputElement['type'] | 'select'
+  placeholder?: string
   error?: string
-}>()
+  options?: ISelectOption[]
+}
+
+defineProps<FieldDefinition>()
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
@@ -24,11 +30,37 @@ function onInput(event: Event) {
         label
       }}</label>
     </div>
+    <select
+      v-if="type === 'select'"
+      :id="`field_${name}`"
+      :name="name"
+      :value="modelValue"
+      @input="onInput"
+      class="fieldInput"
+      :class="{ fieldErrorBorder: !!error }"
+    >
+      <option v-for="option in options" :value="option.value">{{ option.label }}</option>
+    </select>
+    <div v-if="type === 'imageSelect'" class="selectImageWrapper">
+      <img :src="`/src/assets/avatars/${modelValue}.svg`" class="selectImageImage" />
+      <select
+        :id="`field_${name}`"
+        :name="name"
+        :value="modelValue"
+        @input="onInput"
+        class="fieldInput"
+        :class="{ fieldErrorBorder: !!error }"
+      >
+        <option v-for="option in options" :value="option.value">{{ option.label }}</option>
+      </select>
+    </div>
     <input
+      v-else
       :type="type"
       :id="`field_${name}`"
       :name="name"
       :value="modelValue"
+      :placeholder="placeholder"
       @input="onInput"
       class="fieldInput"
       :class="{ fieldErrorBorder: !!error }"
@@ -109,6 +141,24 @@ function onInput(event: Event) {
 
 .fieldErrorBorder {
   border-color: var(--color-error);
+}
+
+.selectImageWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.selectImageImage {
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100px;
+  width: 100px;
 }
 
 @media (min-width: 1024px) {
