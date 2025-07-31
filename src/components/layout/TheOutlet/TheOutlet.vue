@@ -19,6 +19,10 @@ defineProps<{}>()
   width: 100%;
 }
 
+.outletContainer .outletContainer {
+  background-color: var(--color-outlet-background);
+}
+
 @media (min-width: 1024px) {
 }
 </style>

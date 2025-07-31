@@ -82,8 +82,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, _from, next) => {
-  console.log('before Each')
-
   const isLoggedIn = store((state) => state.isLoggedIn)
 
   if (to.name !== 'login' && to.name !== 'signup' && !isLoggedIn) {

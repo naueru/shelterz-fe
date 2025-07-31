@@ -1,7 +1,10 @@
 :root {
   --color-background: #333333;
+  --color-outlet-background: #192533;
   --color-footer-background: #ffd900;
-  --color-header-border: #ffd900;
+  --color-accent-border: #ffd900;
+  --color-nav-border: #ffd900;
+  --color-nav-text: #eeeeee;
   --color-dialog-background: #eeeeee;
   --color-success: #4caf50;
   --color-warning: #ff9800;
@@ -10,6 +13,7 @@
   --color-info: #03a9f4;
 
   --color-black-overlay: rgba(0, 0, 0, 0.15);
+  --color-black-nav-button-overlay: rgba(0, 0, 0, 0.4);
 
   --blue-500: #3b82f6;
   --blue-600: #2563eb;

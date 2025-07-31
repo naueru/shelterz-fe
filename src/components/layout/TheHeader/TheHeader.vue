@@ -25,7 +25,7 @@ defineProps<{}>()
 }
 
 .theHeaderTitle {
-  border: 2px solid var(--color-header-border);
+  border: 2px solid var(--color-accent-border);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
