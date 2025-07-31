@@ -19,7 +19,7 @@ function handleSubmit(data: Record<string, string>) {
 </script>
 
 <template>
-  <div class="signupContainer">
+  <div class="signupViewContainer">
     <Card>
       <SignupForm :onSubmit="handleSubmit" />
     </Card>
@@ -27,7 +27,7 @@ function handleSubmit(data: Record<string, string>) {
 </template>
 
 <style scoped>
-.signupContainer {
+.signupViewContainer {
   align-items: center;
   display: flex;
   height: 100%;
